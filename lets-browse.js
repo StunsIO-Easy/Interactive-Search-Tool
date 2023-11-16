@@ -114,6 +114,9 @@ const usePuppeteer = process.argv.includes("--use-puppeteer");
           askForSearchTerm();
           return;
         } else if (answer.toLowerCase() === "/exit") {
+          if (usePuppeteer) {
+            await browser.close();
+          }
           rl.close();
           return;
         } else if (answer.toLowerCase().startsWith("/v ")) {
